@@ -33,7 +33,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import jsonData from "../../data.json";
 
 const ubications = ["Playa", "Cala", "Cascada", "Montaña", "Cueva", "Desierto", "Barranco", "Lago", "Río"];
 const name = ref("");
@@ -54,11 +53,11 @@ function addLocation(){
   description.value = "";
   ubicationType.value = "";
 
-  saveDataToJson();
+  saveData();
 }
 
 
-function saveDataToJson() {
+function saveData() {
    console.log(jsonData);
   
    var dataJson = JSON.stringify(data.value);

@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref, toRaw } from "vue";
 import L, { marker } from "leaflet";
+import AddLocation from "./components/AddLocation.vue";
 
 const lat = ref(0);
 const lng = ref(0);
@@ -15,6 +16,8 @@ var LeafIcon = L.Icon.extend({
        popupAnchor:  [-3, -76]
     }
 });
+
+
 
 var greenIcon = new LeafIcon({
     iconUrl: 'green-pointer.webp'
@@ -32,6 +35,7 @@ onMounted(() => {
   map.value.on("click", function(e){
             new L.Marker([e.latlng.lat, e.latlng.lng] , {icon: greenIcon}).addTo(map.value);
             markers.push(e.containerPoint);
+            console.log(markers);
          });
 
 });
@@ -56,9 +60,15 @@ function getLocation() {
   }
 }
 
+
 </script>
 
 <template>
+
+  <AddLocation/>
+  {{ data }}
+
+  
   
 <div>
   <div ref="mapContainer" style="width: 400px; height: 400px"></div>
